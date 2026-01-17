@@ -202,6 +202,38 @@ if __name__ == "__main__":
     print("3rd IQF:", results[5])
 
 # 8. Dynamic Programming (memoization palindrome substrings) #
+class PalindromeSubstring:
+   
+    def __init__(self):
+        self.palindrome = None
+
+    def palindrome_length(self, string):
+        n = len(string)
+        self.palindrome = [[-1 for _ in range(n + 1)] for _ in range(n + 1)]
+        reversed_string = string[::-1]
+        return self.find_palindrome(string, reversed_string, n, n)
+
+    def find_palindrome(self, s1, s2, n1, n2):
+        if n1 == 0 or n2 == 0:
+            return 0
+
+        if self.palindrome[n1][n2] != -1:
+            return self.palindrome[n1][n2]
+
+        if s1[n1 - 1] == s2[n2 - 1]:
+            self.palindrome[n1][n2] = 1 + self.find_palindrome(s1, s2, n1 - 1, n2 - 1)
+        else:
+            self.palindrome[n1][n2] = max(
+                self.find_palindrome(s1, s2, n1 - 1, n2), 
+                self.find_palindrome(s1, s2, n1, n2 - 1)
+            )
+            
+        return self.palindrome[n1][n2]
+
+if __name__ == "__main__":
+    palindrome_class = PalindromeSubstring()
+    palindrome_input = str(input("Please enter a word: "))
+    print("The longest palindrome substring in this word is: ", palindrome_class.palindrome_length(palindrome_input), "letters long.")
 
 # 9. Behavioural Design Pattern #
 
