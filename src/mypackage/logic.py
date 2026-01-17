@@ -130,8 +130,69 @@ if __name__ == "__main__":
 # 6. Recursion (factorial calculation) #
 
 # 7. Search (array ...) #
+class SearchAlgorithm:
 
+    def search(self, array):
+        sorted_array = sorted(array)
+        n = len(sorted_array)
+
+        # Largest
+        largest = sorted_array[-1]
+        
+        # Smallest
+        smallest = sorted_array[0]
+        
+        # Mode
+        total = {}
+        for x in sorted_array:
+            total[x] = total.get(x, 0) + 1
+        mode = max(total, key=total.get)
+
+        # Adapted from https://stackoverflow.com/questions/10797819/finding-the-mode-of-a-list
+
+        # Median
+        if n % 2 == 1:
+            median = sorted_array[n // 2]
+        else:
+            median = (sorted_array[n // 2 - 1] + sorted_array[n // 2]) / 2
+
+        # Adapted from https://stackoverflow.com/questions/24101524/finding-median-of-list-in-python
+
+        # 1st IQF
+        lower = sorted_array[:n // 2]
+        lower_n = len(lower)
+        if lower_n % 2 == 1:
+            iqf_q1 = lower[lower_n // 2]
+        else:
+            iqf_q1 = (lower[lower_n // 2 - 1] + lower[lower_n // 2]) / 2
+            
+        # 3rd IQF
+        upper = sorted_array[(n + 1) // 2 if n % 2 != 0 else n // 2:]
+        upper_n = len(upper)
+        if upper_n % 2 == 1:
+            iqf_q3 = upper[upper_n // 2]
+        else:
+            iqf_q3 = (upper[upper_n // 2 - 1] + upper[upper_n // 2]) / 2
+
+        return [smallest, largest, mode, median, iqf_q1, iqf_q3]  
+
+if __name__ == "__main__":
+    search_class = SearchAlgorithm()
+    user_input = input("Enter an array of numbers (space separated): ")
+    sorted_list = [float(x) for x in user_input.split()]
+    results = search_class.search(sorted_list)
+    print("Smallest:", results[0])
+    print("Largest:", results[1])
+    print("Mode:", results[2])
+    print("Median:", results[3])
+    print("1st IQF:", results[4])
+    print("3rd IQF:", results[5])
+    
 # 8. Dynamic Programming (memoization palindrome substrings) #
 
 # 9. Behavioural Design Pattern #
+
+# 10. Creational Design Pattern #
+
+# 11. Structural Design Pattern #
 
