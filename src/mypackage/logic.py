@@ -98,6 +98,34 @@ if __name__ == "__main__":
 # Adapted from https://www.geeksforgeeks.org/dsa/divide-and-conquer-in-python/
 
 # 5. Randomised (card shuffle) #
+import random
+
+class ShuffleDeck:
+
+    def __init__(self):
+        self.suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
+        self.nums = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King']
+        self.deck = []
+        for suit in self.suits:
+            for rank in self.nums:
+                card = rank + " of " + suit
+                self.deck.append(card)
+
+    def shuffle(self):
+            n = len(self.deck)
+
+            for i in range(n - 1, 0, -1):
+                j = random.randint(0, i + 1)
+                self.deck[i], self.deck[j] = self.deck[j], self.deck[i]
+                
+            return self.deck
+
+if __name__ == "__main__":
+    shuffle_class = ShuffleDeck()
+    shuffled_deck = shuffle_class.shuffle()
+    print("Shuffled Deck: ", shuffled_deck)
+
+# Adapted from https://www.geeksforgeeks.org/dsa/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
 
 # 6. Recursion (factorial calculation) #
 
