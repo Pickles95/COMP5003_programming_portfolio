@@ -128,8 +128,21 @@ if __name__ == "__main__":
 # Adapted from https://www.geeksforgeeks.org/dsa/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
 
 # 6. Recursion (factorial calculation) #
+class FactorialofN:
 
-# 7. Search (array ...) #
+    def factorial_of(self, n):
+        if n == 0:
+            return 1
+        else:
+            return n * self.factorial_of(n - 1)
+
+if __name__ == "__main__":
+    factorial_class = FactorialofN()
+    factorial_input = int(input("Please enter a number: "))
+    factorial = factorial_class.factorial_of(factorial_input)
+    print("The factorial of", factorial_input, "is", factorial)
+
+# 7. Search (array) #
 class SearchAlgorithm:
 
     def search(self, array):
@@ -187,7 +200,7 @@ if __name__ == "__main__":
     print("Median:", results[3])
     print("1st IQF:", results[4])
     print("3rd IQF:", results[5])
-    
+
 # 8. Dynamic Programming (memoization palindrome substrings) #
 
 # 9. Behavioural Design Pattern #
