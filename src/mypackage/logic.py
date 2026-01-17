@@ -4,7 +4,6 @@
 class FibonacciNth:
 
     def __init__(self):
-         # Begins the list
          self.array = [0, 1]
 
     def fibonacci(self, n):
@@ -41,15 +40,62 @@ class SortingBubble:
                     moved = True
             if (moved == False):
                 break
+
         return array
 
 if __name__ == "__main__":
     sorting_class = SortingBubble()
-    sorting_input = input("Please enter a list of numbers separated by spaces: ")
-    sorted_list = [int(x) for x in sorting_input.split()]
+    bubble_input = input("Please enter a list of numbers separated by spaces: ")
+    sorted_list = [int(x) for x in bubble_input.split()]
     print("The sorted list is: ", sorting_class.bubble_sort(sorted_list))
 
+# Adapted from https://www.geeksforgeeks.org/dsa/bubble-sort-algorithm/
+
 # 4. Brute Force (divide and conquer merge) #
+class SortingMerge:
+
+    def sort(self, array):
+        if len(array) <= 1:
+            return array
+        else:
+            middle = len(array) // 2
+            left = array[:middle]
+            right = array[middle:]
+            left_sorted = self.sort(left)
+            right_sorted = self.sort(right)
+
+            return self.merge(left_sorted, right_sorted)
+
+    def merge(self, left, right):
+        sorted_list = []
+        i = 0
+        j = 0
+
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                sorted_list.append(left[i])
+                i += 1
+            else:
+                sorted_list.append(right[j])
+                j += 1
+
+        while i < len(left):
+            sorted_list.append(left[i])
+            i += 1
+
+        while j < len(right):
+            sorted_list.append(right[j])
+            j += 1
+        
+        return sorted_list
+
+if __name__ == "__main__":
+    merge_class = SortingMerge()
+    merge_input = input("Please enter a list of numbers separated by spaces: ")
+    sorted_list = [int(x) for x in merge_input.split()]
+    print("The sorted list is: ", merge_class.sort(sorted_list))
+
+# Adapted from https://www.geeksforgeeks.org/dsa/divide-and-conquer-in-python/
 
 # 5. Randomised (card shuffle) #
 
