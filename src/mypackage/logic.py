@@ -238,6 +238,25 @@ if __name__ == "__main__":
 # 9. Behavioural Design Pattern #
 
 # 10. Creational Design Pattern #
+class FactoryAlgorithm:
+    
+    def get_algorithm(self, algorithm_type):
+        if algorithm_type == "Fibonacci":
+            return FibonacciNth()
+        elif algorithm_type == "Bubble":
+            return SortingBubble()
+        elif algorithm_type == "Merge":
+            return SortingMerge()
+        elif algorithm_type == "Random":
+            return ShuffleDeck()
+        elif algorithm_type == "Factorial":
+            return FactorialofN()
+        elif algorithm_type == "Search":
+            return SearchAlgorithm()
+        elif algorithm_type == "Palindrome":
+            return PalindromeSubstring()
+        else:
+            return None
 
 # 11. Structural Design Pattern #
 
