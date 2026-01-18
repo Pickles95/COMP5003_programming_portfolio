@@ -174,6 +174,7 @@ class SearchAlgorithm:
         # 1st IQF
         lower = sorted_array[:n // 2]
         lower_n = len(lower)
+
         if lower_n % 2 == 1:
             iqf_q1 = lower[lower_n // 2]
         else:
@@ -182,6 +183,7 @@ class SearchAlgorithm:
         # 3rd IQF
         upper = sorted_array[(n + 1) // 2 if n % 2 != 0 else n // 2:]
         upper_n = len(upper)
+
         if upper_n % 2 == 1:
             iqf_q3 = upper[upper_n // 2]
         else:
@@ -237,7 +239,7 @@ if __name__ == "__main__":
 
 # 9. Behavioural Design Pattern #
 
-# 10. Creational Design Pattern #
+# 10. Creational Design Pattern (Factory) #
 class FactoryAlgorithm:
     
     def get_algorithm(self, algorithm_type):
@@ -258,5 +260,27 @@ class FactoryAlgorithm:
         else:
             return None
 
-# 11. Structural Design Pattern #
+# 11. Structural Design Pattern (Facade) #
+class FacadeAlgorithm:
+    
+    def __init__(self):
+        self.factory = FactoryAlgorithm()
+
+    def run_algorithm(self, name, user_input):
+        obj = self.factory.get_algorithm(name)
+        
+        if name == "Fibonacci":
+            return obj.fibonacci(user_input)
+        elif name == "Bubble":
+            return obj.bubble_sort(user_input)
+        elif name == "Merge":
+            return obj.sort(user_input)
+        elif name == "Random":
+            return obj.shuffle()
+        elif name == "Factorial":
+            return obj.factorial_of(user_input)
+        elif name == "Search":
+            return obj.search(user_input)
+        elif name == "Palindrome":
+            return obj.palindrome_length(user_input)
 
