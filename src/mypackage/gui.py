@@ -14,9 +14,12 @@ class PortfolioGUI:
         self.logic = FacadeAlgorithm()
 
         # UoW Logo
-        self.UoWLogo = tk.PhotoImage(file="Summative/COMP5003_programming_portfolio/src/mypackage/UoWLogo.png")
-        self.UoWLogo = self.UoWLogo.subsample(1, 1)
-        self.logo_display = tk.Label(root, image=self.UoWLogo, bg="#702A6A")
+        try:
+            self.UoWLogo = tk.PhotoImage(file="src/mypackage/UoWLogo.png")
+            self.logo_display = tk.Label(root, image=self.UoWLogo, bg="#702A6A")
+        except tk.TclError:
+            self.logo_display = tk.Label(root, text="UoW Programming Portfolio", bg="#702A6A", fg="white", font=("Arial", 14))
+
         self.logo_display.pack(pady=10)
 
         # Add an entry field for user
