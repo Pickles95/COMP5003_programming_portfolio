@@ -12,6 +12,9 @@ Algorithms implemented:
 6. Search an array
 7. Find a Palindrome substring
 
+Instructions for use:
+Run gui.py file
+
 Instructions for use (Fibonacci, Factorial):
 Enter a number into the input box and click relevant button
 
